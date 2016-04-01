@@ -4,6 +4,6 @@
 
 **Dokumentaatio:**
 
-[Aihemäärittely](dokumentaatio/aihemäärittely.md)
+[Aihemäärittely](dokumentointi/aihemäärittely.md)
 
-[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+[Tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
