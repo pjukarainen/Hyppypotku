@@ -8,4 +8,3 @@
 
 [Tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
 
-[Aiheen kuvaus ja rakenne](dokumentointi/aiheenKuvausJaRakenne.md)
