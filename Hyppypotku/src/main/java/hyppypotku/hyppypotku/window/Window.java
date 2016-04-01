@@ -43,4 +43,27 @@ public class Window {
         return canvas;
     }
 
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidht() {
+        return widht;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return this.title + " " + this.widht + " x " + this.height;  
+    }
+
 }

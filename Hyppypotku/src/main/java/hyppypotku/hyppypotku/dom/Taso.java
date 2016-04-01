@@ -1,10 +1,9 @@
-
 package hyppypotku.hyppypotku.dom;
 
 import javax.swing.JPanel;
 
-public class Taso extends JPanel{
-    
+public class Taso extends JPanel {
+
     private Pelaaja pelaajaYksi;
     private Pelaaja pelaajaKaksi;
     private int aika;
@@ -14,6 +13,5 @@ public class Taso extends JPanel{
         this.pelaajaKaksi = pelaajaKaksi;
         this.aika = aika;
     }
-    
-    
+
 }

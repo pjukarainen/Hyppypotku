@@ -9,8 +9,8 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     public static void main(String args[]) {
-       Game game = new Game("Hyppypotku", 1024, 768);
-       game.start();
+        Game game = new Game("Hyppypotku", 1024, 768);
+        game.start();
 
     }
 }

@@ -20,13 +20,18 @@ public class Game implements Runnable {
 
     private BufferStrategy bs;
     private Graphics g;
-    
+
     private BufferedImage testImage;
 
     public Game(String title, int width, int height) {
+        if (width <= 0 || height <= 0) {
+            System.out.println("Insert positive resolution values please");
+
+        }
         this.width = width;
         this.height = height;
         this.title = title;
+
     }
 
     private void init() {
@@ -46,10 +51,10 @@ public class Game implements Runnable {
         }
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
-		//piirrä
+        //piirrä
 
         g.drawImage(testImage, 20, 20, null);
-        
+
         bs.show();
         g.dispose();
     }
@@ -87,4 +92,34 @@ public class Game implements Runnable {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString() {
+        return this.title + " " + this.width + " x " + this.height;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public Window getWindow() {
+        return window;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public Graphics getG() {
+        return g;
+    }
+
 }
