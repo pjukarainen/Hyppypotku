@@ -7,3 +7,5 @@
 [Aihemäärittely](dokumentointi/aihemäärittely.md)
 
 [Tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
+
+[Aiheen kuvaus ja rakenne](dokumentointi/aiheenKuvausJaRakenne.md)
