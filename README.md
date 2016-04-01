@@ -1,6 +1,6 @@
 # Hyppypotku
 
-2D-Taistelupeli nimeltä Hyppypotku. Pelissä on kaksi pelaajaa, jotka molemmat kontrolloivat yhtä hahmoa. Pelin hahmot osaavat joko hypätä tai potkia. Ottelun voittaja on se pelaaja joka ensin voittaa viisi erää.
+2D-Taistelupeli nimeltä Hyppypotku. Pelissä on kaksi pelaajaa, jotka molemmat kontrolloivat yhtä hahmoa. Pelin hahmot osaavat hyppiä ja potkia. Ottelun voittaja on se pelaaja joka ensin voittaa viisi erää.
 
 **Dokumentaatio:**
 
