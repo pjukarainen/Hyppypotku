@@ -3,6 +3,11 @@ package hyppypotku.hyppypotku.gameframework;
 import hyppypotku.hyppypotku.gfx.Assets;
 import hyppypotku.hyppypotku.gfx.ImageLoader;
 import hyppypotku.hyppypotku.gfx.SpriteSheet;
+import hyppypotku.hyppypotku.input.KeyManager;
+import hyppypotku.hyppypotku.states.GameState;
+import hyppypotku.hyppypotku.states.MenuState;
+import hyppypotku.hyppypotku.states.State;
+import hyppypotku.hyppypotku.states.TutorialState;
 import hyppypotku.hyppypotku.window.Window;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -23,6 +28,14 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
+    //states
+    private State GameState;
+    private State MenuState;
+    private State TutorialState;
+
+    //keyboard
+    private KeyManager keymanager;
+
     public Game(String title, int width, int height) {
         if (width <= 0 || height <= 0) {
             System.out.println("Insert positive resolution values please");
@@ -31,19 +44,27 @@ public class Game implements Runnable {
         this.width = width;
         this.height = height;
         this.title = title;
+        keymanager = new KeyManager();
 
     }
 
     private void init() {
         window = new Window(title, width, height);
+        window.getFrame().addKeyListener(keymanager);
         Assets.init();
 
+        GameState = new GameState(this);
+        MenuState = new MenuState(this);
+        TutorialState = new TutorialState(this);
+        State.setState(GameState);
     }
 
-    int x = 0;
-
     private void tick() {
-        x++;
+        keymanager.tick();
+
+        if (State.getState() != null) {
+            State.getState().tick();
+        }
 
     }
 
@@ -57,11 +78,9 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //piirrä
 
-        g.drawImage(Assets.hpfull, 30, 30, null);
-        g.drawImage(Assets.hpzero, 350, 30, null);
-        g.drawImage(Assets.player, 60 + x, 200, null);
-        g.drawImage(Assets.roundfull, 100, 80, null);
-        g.drawImage(Assets.roundempty, 300, 80, null);
+        if (State.getState() != null) {
+            State.getState().render(g);
+        }
         bs.show();
         g.dispose();
     }
@@ -152,6 +171,10 @@ public class Game implements Runnable {
 
     public Graphics getG() {
         return g;
+    }
+
+    public KeyManager getKeymanager() {
+        return keymanager;
     }
 
 }

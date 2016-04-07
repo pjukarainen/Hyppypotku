@@ -18,6 +18,7 @@ public class Window {
         this.widht = widht;
         this.height = height;
 
+        setupCanvas();
         createWindow();
     }
 
@@ -29,14 +30,17 @@ public class Window {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        frame.add(canvas);
+        frame.pack();
+
+    }
+
+    private void setupCanvas() {
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(widht, height));
         canvas.setMaximumSize(new Dimension(widht, height));
         canvas.setMinimumSize(new Dimension(widht, height));
-
-        frame.add(canvas);
-        frame.pack();
-
+        canvas.setFocusable(false);
     }
 
     public Canvas getCanvas() {
@@ -58,12 +62,10 @@ public class Window {
     public String getTitle() {
         return title;
     }
-    
-    
 
     @Override
     public String toString() {
-        return this.title + " " + this.widht + " x " + this.height;  
+        return this.title + " " + this.widht + " x " + this.height;
     }
 
 }
