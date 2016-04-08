@@ -16,28 +16,28 @@ import java.awt.Graphics;
  * @author Pete
  */
 public class GameState extends State {
-    
+
     private Stickman stickman;
     private Blockman blockman;
-    
+
     public GameState(Game game) {
         super(game);
-        stickman = new Stickman(game, 100, 100);
-        blockman = new Blockman(game, 300, 100);
+        stickman = new Stickman(game, 200, this.game.getHeight() - 80);
+        blockman = new Blockman(game, 800, this.game.getHeight() - 80);
     }
-    
+
     @Override
     public void tick() {
         stickman.tick();
         blockman.tick();
-        
+
     }
-    
+
     @Override
     public void render(Graphics g) {
         stickman.render(g);
         blockman.render(g);
-        
+
     }
-    
+
 }

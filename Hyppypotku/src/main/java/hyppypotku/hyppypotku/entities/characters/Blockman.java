@@ -24,18 +24,26 @@ public class Blockman extends Character {
 
     @Override
     public void tick() {
+        getInput();
+        move();
+    }
+
+    public void getInput() {
+        xMove = 0;
+        yMove = 0;
+
         if (game.getKeymanager().blockmanJump) {
-            y -= 5;
+            yMove = -speed;
+
         }
         if (game.getKeymanager().blockmanKick) {
-            y += 5;
-            x -= 5;
+            yMove = speed;
+            xMove = speed;
         }
-
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y, null);
+        g.drawImage(Assets.player, (int) x, (int) y, widht, height, null);
     }
 }

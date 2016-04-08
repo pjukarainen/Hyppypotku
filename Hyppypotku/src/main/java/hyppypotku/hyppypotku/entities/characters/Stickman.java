@@ -24,20 +24,28 @@ public class Stickman extends Character {
 
     @Override
     public void tick() {
-        if (game.getKeymanager().stickmanJump) {
-            y -= 30;
+        getInput();
+        move();
+
+    }
+
+    public void getInput() {
+        xMove = 0;
+        yMove = 0;
+
+        if (game.getKeymanager().stickmanJump && y <= this.game.getHeight() - this.getHeight()) {
+            yMove = -speed;
+
         }
         if (game.getKeymanager().stickmanKick) {
-            y += 30;
-            x += 15;
-
+            yMove = speed;
+            xMove = speed;
         }
-
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y, null);
+        g.drawImage(Assets.player, (int) x, (int) y, widht, height, null);
     }
 
 }
