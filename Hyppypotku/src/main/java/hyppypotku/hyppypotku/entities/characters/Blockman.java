@@ -29,8 +29,7 @@ public class Blockman extends Character {
     }
 
     public void getInput() {
-        xMove = 0;
-        yMove = 0;
+        
 
         if (game.getKeymanager().blockmanJump) {
             yMove = -speed;

@@ -26,14 +26,13 @@ public class Stickman extends Character {
     public void tick() {
         getInput();
         move();
+        
 
     }
 
     public void getInput() {
-        xMove = 0;
-        yMove = 0;
 
-        if (game.getKeymanager().stickmanJump && y <= this.game.getHeight() - this.getHeight()) {
+        if (game.getKeymanager().stickmanJump) {
             yMove = -speed;
 
         }

@@ -16,7 +16,7 @@ public abstract class Character extends Entity {
     public static final int DEFAULT_LIVES = 5;
     public static final int DEFAULT_WIDHT = 48;
     public static final int DEFAULT_HEIGHT = 80;
-    public static final float DEFAULT_SPEED = 40.0f;
+    public static final float DEFAULT_SPEED = 5.0f;
 
     protected int lives;
     protected float xMove, yMove;
@@ -32,7 +32,7 @@ public abstract class Character extends Entity {
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
-        gravity = 20.5f;
+        gravity = 0.05f;
     }
 
     public void move() {
