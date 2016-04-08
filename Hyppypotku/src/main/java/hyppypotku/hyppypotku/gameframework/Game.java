@@ -1,6 +1,13 @@
 package hyppypotku.hyppypotku.gameframework;
 
+import hyppypotku.hyppypotku.gfx.Assets;
 import hyppypotku.hyppypotku.gfx.ImageLoader;
+import hyppypotku.hyppypotku.gfx.SpriteSheet;
+import hyppypotku.hyppypotku.input.KeyManager;
+import hyppypotku.hyppypotku.states.GameState;
+import hyppypotku.hyppypotku.states.MenuState;
+import hyppypotku.hyppypotku.states.State;
+import hyppypotku.hyppypotku.states.TutorialState;
 import hyppypotku.hyppypotku.window.Window;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,7 +28,13 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
-    private BufferedImage testImage;
+    //states
+    private State GameState;
+    private State MenuState;
+    private State TutorialState;
+
+    //keyboard
+    private KeyManager keymanager;
 
     public Game(String title, int width, int height) {
         if (width <= 0 || height <= 0) {
@@ -31,15 +44,27 @@ public class Game implements Runnable {
         this.width = width;
         this.height = height;
         this.title = title;
+        keymanager = new KeyManager();
 
     }
 
     private void init() {
         window = new Window(title, width, height);
-        testImage = ImageLoader.loadImage("/textures/testi.png");
+        window.getFrame().addKeyListener(keymanager);
+        Assets.init();
+
+        GameState = new GameState(this);
+        MenuState = new MenuState(this);
+        TutorialState = new TutorialState(this);
+        State.setState(GameState);
     }
 
     private void tick() {
+        keymanager.tick();
+
+        if (State.getState() != null) {
+            State.getState().tick();
+        }
 
     }
 
@@ -53,8 +78,9 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //piirrä
 
-        g.drawImage(testImage, 20, 20, null);
-
+        if (State.getState() != null) {
+            State.getState().render(g);
+        }
         bs.show();
         g.dispose();
     }
@@ -63,9 +89,34 @@ public class Game implements Runnable {
 
         init();
 
+        //pakotetaan peli pyörimään tasaisesti 60 fps + visuaalinen fps-laskuri konsoliin
+        int fps = 60;
+        double timePerTick = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+
+        long timer = 0;
+        long ticks = 0;
+
         while (running) {
-            tick();
-            render();
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if (delta >= 1) {
+                tick();
+                render();
+                delta--;
+                ticks++;
+            }
+
+            if (timer >= 1000000000) {
+                System.out.println("FPS: " + ticks);
+                ticks = 0;
+                timer = 0;
+            }
         }
 
         stop();
@@ -121,5 +172,11 @@ public class Game implements Runnable {
     public Graphics getG() {
         return g;
     }
+
+    public KeyManager getKeymanager() {
+        return keymanager;
+    }
+
+   
 
 }
