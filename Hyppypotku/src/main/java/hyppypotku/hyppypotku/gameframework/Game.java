@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Luokan tehtävänä hallinnoida pelin kulkua
+ */
 public class Game implements Runnable {
 
     private Window window;
@@ -48,6 +51,9 @@ public class Game implements Runnable {
 
     }
 
+    /**
+     * Alustaa ikkunan ja lataa tarvittavat hahmot ja muut tekstuurit
+     */
     private void init() {
         window = new Window(title, width, height);
         window.getFrame().addKeyListener(keymanager);
@@ -85,11 +91,14 @@ public class Game implements Runnable {
         g.dispose();
     }
 
+    /**
+     * Pakotetaan peli pyörimään tasaisesti 60 fps + visuaalinen fps-laskuri
+     * konsoliin
+     */
     public void run() {
 
         init();
 
-        //pakotetaan peli pyörimään tasaisesti 60 fps + visuaalinen fps-laskuri konsoliin
         int fps = 60;
         double timePerTick = 1000000000 / fps;
         double delta = 0;
@@ -123,6 +132,9 @@ public class Game implements Runnable {
 
     }
 
+    /**
+     * Pelin käynnistysmetodi
+     */
     public synchronized void start() {
         if (running) {
             return;
@@ -132,6 +144,9 @@ public class Game implements Runnable {
         thread.start();
     }
 
+    /**
+     * Pelin pysäytysmetodi
+     */
     public synchronized void stop() {
         if (!running) {
             return;
@@ -176,7 +191,5 @@ public class Game implements Runnable {
     public KeyManager getKeymanager() {
         return keymanager;
     }
-
-   
 
 }

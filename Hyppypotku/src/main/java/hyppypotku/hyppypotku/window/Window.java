@@ -4,6 +4,9 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
+/**
+ * Ikkuna-luokka, joka asettaa ikkunalle halutut ominaisuudet
+ */
 public class Window {
 
     private JFrame frame;

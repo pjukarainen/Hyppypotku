@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hyppypotku.hyppypotku.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- *
- * @author Pete
+ * Luokka määrittää mistä napeista pelaajat voivat hyppiä ja potkia
  */
 public class KeyManager implements KeyListener {
 
@@ -21,6 +15,9 @@ public class KeyManager implements KeyListener {
         keys = new boolean[256];
     }
 
+    /**
+     * Asettaa pelattavien hahmojen napit
+     */
     public void tick() {
         stickmanJump = keys[KeyEvent.VK_A];
         stickmanKick = keys[KeyEvent.VK_D];

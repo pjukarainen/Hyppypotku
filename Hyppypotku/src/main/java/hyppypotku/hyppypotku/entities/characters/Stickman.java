@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hyppypotku.hyppypotku.entities.characters;
 
 import hyppypotku.hyppypotku.gameframework.Game;
@@ -10,8 +5,7 @@ import hyppypotku.hyppypotku.gfx.Assets;
 import java.awt.Graphics;
 
 /**
- *
- * @author Pete
+ * Pelin vasemmalta puolelta aloittava hahmo
  */
 public class Stickman extends Character {
 
@@ -22,14 +16,20 @@ public class Stickman extends Character {
         this.game = game;
     }
 
+    /**
+     * Metodi päivittää käyttäjän antamat syötteet ja liikuttaa hahmoa niiden
+     * mukaan
+     */
     @Override
     public void tick() {
         getInput();
         move();
-        
 
     }
 
+    /**
+     * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii
+     */
     public void getInput() {
 
         if (game.getKeymanager().stickmanJump) {
@@ -42,6 +42,11 @@ public class Stickman extends Character {
         }
     }
 
+    /**
+     * Piirtää ruudulle hahmon
+     *
+     * @param grafiikkaobjekti
+     */
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.player, (int) x, (int) y, widht, height, null);

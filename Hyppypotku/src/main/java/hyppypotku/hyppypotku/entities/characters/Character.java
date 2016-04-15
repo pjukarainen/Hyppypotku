@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hyppypotku.hyppypotku.entities.characters;
 
 import hyppypotku.hyppypotku.entities.Entity;
 
 /**
- *
- * @author Pete
+ * Luokka toimii pelin pelattavien hahmojen yliluokkana
  */
 public abstract class Character extends Entity {
 
@@ -35,6 +29,9 @@ public abstract class Character extends Entity {
         gravity = 0.05f;
     }
 
+    /**
+     * Metodin tehtävänä liikuttaa hahmoa ja määrittää painovoiman vaikutus
+     */
     public void move() {
         x += xMove;
         y += yMove;
@@ -51,7 +48,7 @@ public abstract class Character extends Entity {
 
     @Override
     public int getHeight() {
-        return super.getHeight(); 
+        return super.getHeight();
     }
 
     public int getLives() {
@@ -60,7 +57,7 @@ public abstract class Character extends Entity {
 
     @Override
     public int getWidht() {
-        return super.getWidht(); 
+        return super.getWidht();
     }
 
 }
