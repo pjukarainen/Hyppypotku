@@ -5,6 +5,7 @@ import hyppypotku.hyppypotku.entities.characters.Stickman;
 import hyppypotku.hyppypotku.gameframework.Game;
 import hyppypotku.hyppypotku.gfx.Assets;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 /**
  * Peli-tila, jossa asetetaan hahmojen aloitussijainti sekä päivitetään ja
@@ -14,11 +15,18 @@ public class GameState extends State {
 
     private Stickman stickman;
     private Blockman blockman;
+    private BufferedImage background;
 
-    public GameState(Game game) {
+    public GameState(Game game, Stickman stickman, Blockman blockman) {
         super(game);
-        stickman = new Stickman(game, 200, this.game.getHeight() - 80);
-        blockman = new Blockman(game, 800, this.game.getHeight() - 80);
+        background = Assets.background;
+        this.stickman = stickman;
+        this.blockman = blockman;
+
+    }
+
+    public BufferedImage getBackground() {
+        return background;
     }
 
     @Override
@@ -30,6 +38,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(background, 0, 0, null);
         stickman.render(g);
         blockman.render(g);
 

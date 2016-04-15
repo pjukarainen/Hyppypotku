@@ -10,7 +10,7 @@ public abstract class Character extends Entity {
     public static final int DEFAULT_LIVES = 5;
     public static final int DEFAULT_WIDHT = 48;
     public static final int DEFAULT_HEIGHT = 80;
-    public static final float DEFAULT_SPEED = 5.0f;
+    public static final float DEFAULT_SPEED = 10.0f;
 
     protected int lives;
     protected float xMove, yMove;
@@ -26,7 +26,7 @@ public abstract class Character extends Entity {
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
-        gravity = 0.05f;
+        gravity = 0.15f;
     }
 
     /**
@@ -36,6 +36,59 @@ public abstract class Character extends Entity {
         x += xMove;
         y += yMove;
         yMove += gravity;
+        checkOutOfBounds();
+    }
+
+    protected boolean isGrounded() {
+        if (y >= 697 - this.height) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected boolean isAirborne() {
+        if (y <= 696 - this.height) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isJumpingBack() {
+        if (yMove == (-speed / 2) || xMove == (-speed / 2)) {
+            return true;
+        }
+
+        if (yMove == (speed / 2) || xMove == (speed / 2)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected boolean isKicking() {
+        if (xMove == speed || xMove == -speed) {
+            return true;
+        }
+        return false;
+    }
+
+    private void checkOutOfBounds() {
+        if (x <= 0) {
+            x = 0;
+        }
+
+        if (x >= 1024 - this.widht) {
+            x = 1024 - this.widht;
+        }
+
+        if (y <= 0) {
+            y = 0;
+        }
+
+        if (y >= 697 - this.height) {
+            y = 697 - this.height;
+        }
     }
 
     public float getxMove() {

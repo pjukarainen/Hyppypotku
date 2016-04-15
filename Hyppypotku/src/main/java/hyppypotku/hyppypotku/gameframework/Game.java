@@ -1,5 +1,7 @@
 package hyppypotku.hyppypotku.gameframework;
 
+import hyppypotku.hyppypotku.entities.characters.Blockman;
+import hyppypotku.hyppypotku.entities.characters.Stickman;
 import hyppypotku.hyppypotku.gfx.Assets;
 import hyppypotku.hyppypotku.gfx.ImageLoader;
 import hyppypotku.hyppypotku.gfx.SpriteSheet;
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 public class Game implements Runnable {
 
     private Window window;
-    public int width, height;
+    private int width, height;
     public String title;
 
     private boolean running = false;
@@ -30,6 +32,10 @@ public class Game implements Runnable {
 
     private BufferStrategy bs;
     private Graphics g;
+
+    //characters
+    private Stickman stickman;
+    private Blockman blockman;
 
     //states
     private State GameState;
@@ -48,6 +54,8 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         keymanager = new KeyManager();
+        stickman = new Stickman(this, 200, this.height - 100);
+        blockman = new Blockman(this, 800, this.height - 100);
 
     }
 
@@ -59,7 +67,7 @@ public class Game implements Runnable {
         window.getFrame().addKeyListener(keymanager);
         Assets.init();
 
-        GameState = new GameState(this);
+        GameState = new GameState(this, stickman, blockman);
         MenuState = new MenuState(this);
         TutorialState = new TutorialState(this);
         State.setState(GameState);
@@ -188,8 +196,22 @@ public class Game implements Runnable {
         return g;
     }
 
+    public State getGameState() {
+        return GameState;
+    }
+
     public KeyManager getKeymanager() {
         return keymanager;
     }
+
+    public Blockman getBlockman() {
+        return blockman;
+    }
+
+    public Stickman getStickman() {
+        return stickman;
+    }
+    
+    
 
 }

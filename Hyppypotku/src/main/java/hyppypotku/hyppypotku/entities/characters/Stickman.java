@@ -14,6 +14,7 @@ public class Stickman extends Character {
     public Stickman(Game game, float x, float y) {
         super(x, y, Character.DEFAULT_WIDHT, Character.DEFAULT_HEIGHT);
         this.game = game;
+
     }
 
     /**
@@ -31,15 +32,42 @@ public class Stickman extends Character {
      * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii
      */
     public void getInput() {
+        if (!isAirborne()) {
+            yMove = 0;
+            xMove = 0;
+        }
 
         if (game.getKeymanager().stickmanJump) {
-            yMove = -speed;
+            if (!isAirborne()) {
+                yMove = -speed;
+            }
 
         }
         if (game.getKeymanager().stickmanKick) {
-            yMove = speed;
-            xMove = speed;
+            if (isAirborne() && !isJumpingBack() && !isKicking()) {
+                yMove = speed;
+                xMove = posOrNeg() * speed;
+            }
+            if (isGrounded()) {
+                yMove = -speed / 2;
+                xMove = posOrNeg() * (-speed / 2);
+
+            }
         }
+    }
+
+    public boolean isLeftmost() {
+        if (this.x < this.game.getBlockman().getX()) {
+            return true;
+        }
+        return false;
+    }
+
+    private int posOrNeg() {
+        if (isLeftmost()) {
+            return 1;
+        }
+        return -1;
     }
 
     /**
