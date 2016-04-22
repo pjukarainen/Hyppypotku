@@ -1,5 +1,6 @@
 package hyppypotku.hyppypotku.gameframework;
 
+import hyppypotku.hyppypotku.entities.characters.Character;
 import hyppypotku.hyppypotku.entities.characters.Blockman;
 import hyppypotku.hyppypotku.entities.characters.Stickman;
 import hyppypotku.hyppypotku.gfx.Assets;
@@ -12,7 +13,10 @@ import hyppypotku.hyppypotku.states.State;
 import hyppypotku.hyppypotku.states.TutorialState;
 import hyppypotku.hyppypotku.window.Window;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
@@ -80,6 +84,8 @@ public class Game implements Runnable {
             State.getState().tick();
         }
 
+        checkCollisions();
+
     }
 
     private void render() { //PIIRTÄÄ RUUDULLE
@@ -94,6 +100,16 @@ public class Game implements Runnable {
 
         if (State.getState() != null) {
             State.getState().render(g);
+            g.drawString("Stickman: " + Integer.toString(this.stickman.getLives()), 15, 20);
+            g.drawString("Blockman: " + Integer.toString(this.blockman.getLives()), 945, 20);
+        }
+
+        if (this.stickman.getLives() == 0) {
+            drawWinner(g, this.blockman);
+        }
+
+        if (this.blockman.getLives() == 0) {
+            drawWinner(g, this.stickman);
         }
         bs.show();
         g.dispose();
@@ -167,6 +183,38 @@ public class Game implements Runnable {
         }
     }
 
+    public void checkCollisions() {
+        Rectangle playerOne = stickman.getHitbox();
+        Rectangle playerTwo = blockman.getHitbox();
+
+        if (playerOne.intersects(playerTwo) && this.stickman.getHitboxActive() && this.stickman.getY() <= this.blockman.getY()) {
+            System.out.println("stickman osu");
+            this.blockman.loseLives();
+            resetRound();
+        } else if (playerOne.intersects(playerTwo) && this.blockman.getHitboxActive() && this.blockman.getY() <= this.stickman.getY()) {
+            System.out.println("blockman osu");
+            this.stickman.loseLives();
+            resetRound();
+        }
+    }
+
+    public void resetRound() {
+        this.stickman.setX(200);
+        this.stickman.setY(this.height - 100);
+
+        this.blockman.setX(800);
+        this.blockman.setY(this.height - 100);
+    }
+
+    private void drawWinner(Graphics g, Character c) {
+        String msg = c.toString() + " wins!";
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+
+        g.setColor(Color.RED);
+        g.setFont(small);
+        g.drawString(msg, 470, 250);
+    }
+
     @Override
     public String toString() {
         return this.title + " " + this.width + " x " + this.height;
@@ -211,7 +259,5 @@ public class Game implements Runnable {
     public Stickman getStickman() {
         return stickman;
     }
-    
-    
 
 }
