@@ -6,23 +6,30 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
- * Pelin vasemmalta puolelta aloittava hahmo
+ * Pelin vasemmalta puolelta aloittava hahmo.
  */
 public class Stickman extends Character {
 
     private Game game;
     private Boolean hitboxActive;
 
+    /**
+     * Konstruktori.
+     *
+     * @param game peli-objekti
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Stickman(Game game, float x, float y) {
         super(x, y, Character.DEFAULT_WIDHT, Character.DEFAULT_HEIGHT);
         this.game = game;
-        this.hitboxActive = true;
+        this.hitboxActive = false;
 
     }
 
     /**
      * Metodi päivittää käyttäjän antamat syötteet ja liikuttaa hahmoa niiden
-     * mukaan
+     * mukaan.
      */
     @Override
     public void tick() {
@@ -32,7 +39,7 @@ public class Stickman extends Character {
     }
 
     /**
-     * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii
+     * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii.
      */
     public void getInput() {
         if (!isAirborne()) {
@@ -63,6 +70,11 @@ public class Stickman extends Character {
         }
     }
 
+    /**
+     * Selvittää onko pelihahmo vasemmanpuolimmaisin.
+     *
+     * @return boolean
+     */
     public boolean isLeftmost() {
         if (this.x < this.game.getBlockman().getX()) {
             return true;
@@ -81,6 +93,9 @@ public class Stickman extends Character {
         return hitboxActive;
     }
 
+    /**
+     * Vähentää hahmon elämiä.
+     */
     public void loseLives() {
         this.lives--;
     }
@@ -90,13 +105,19 @@ public class Stickman extends Character {
         return this.lives;
     }
 
+    /**
+     * Asettaa hahmon aloituspaikan.
+     *
+     * @param coordX hahmon x-koordinaatti
+     * @param coordY hahmon y-koordinaatti
+     */
     public void setStartPos(int coordX, int coordY) {
         this.x = coordX;
         this.y = coordY;
     }
 
     /**
-     * Piirtää ruudulle hahmon
+     * Piirtää ruudulle hahmon.
      *
      * @param grafiikkaobjekti
      */

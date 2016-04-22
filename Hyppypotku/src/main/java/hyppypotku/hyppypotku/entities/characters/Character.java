@@ -4,7 +4,7 @@ import hyppypotku.hyppypotku.entities.Entity;
 import java.awt.Rectangle;
 
 /**
- * Luokka toimii pelin pelattavien hahmojen yliluokkana
+ * Luokka toimii pelin pelattavien hahmojen yliluokkana.
  */
 public abstract class Character extends Entity {
 
@@ -18,6 +18,14 @@ public abstract class Character extends Entity {
     protected float speed;
     protected float gravity;
 
+    /**
+     * Konstruktori.
+     *
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     * @param widht leveys
+     * @param height korkeus
+     */
     public Character(float x, float y, int widht, int height) {
         super(x, y, widht, height);
         lives = DEFAULT_LIVES;
@@ -28,7 +36,7 @@ public abstract class Character extends Entity {
     }
 
     /**
-     * Metodin tehtävänä liikuttaa hahmoa ja määrittää painovoiman vaikutus
+     * Metodin tehtävänä liikuttaa hahmoa ja määrittää painovoiman vaikutus.
      */
     public void move() {
         x += xMove;
@@ -93,10 +101,20 @@ public abstract class Character extends Entity {
         }
     }
 
+    /**
+     * Palauttaa liikkumiseen liittyvän muuttujan.
+     *
+     * @return x-koordinaatistossa liikkuminen
+     */
     public float getxMove() {
         return xMove;
     }
 
+    /**
+     * Palauttaa liikkumiseen liittyvän muuttujan.
+     *
+     * @return y-koordinaatistossa liikkuminen
+     */
     public float getyMove() {
         return yMove;
     }

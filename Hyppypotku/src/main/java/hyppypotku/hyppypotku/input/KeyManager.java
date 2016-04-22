@@ -4,19 +4,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Luokka määrittää mistä napeista pelaajat voivat hyppiä ja potkia
+ * Luokka määrittää mistä napeista pelaajat voivat hyppiä ja potkia.
  */
 public class KeyManager implements KeyListener {
 
     private boolean[] keys;
     public boolean stickmanJump, stickmanKick, blockmanJump, blockmanKick;
 
+    /**
+     * Konstruktori.
+     */
     public KeyManager() {
         keys = new boolean[256];
     }
 
     /**
-     * Asettaa pelattavien hahmojen napit
+     * Asettaa pelattavien hahmojen napit.
      */
     public void tick() {
         stickmanJump = keys[KeyEvent.VK_A];
@@ -33,7 +36,7 @@ public class KeyManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
-        System.out.println("toimii");
+//        System.out.println("toimii");
 
     }
 
