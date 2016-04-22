@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 8,
-             Errors: 0,
+      <title>File: 15,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.dom.Pelaaja.java">hyppypotku/hyppypotku/dom/Pelaaja.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.entities.characters.Blockman.java">hyppypotku/hyppypotku/entities/characters/Blockman.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.dom.Taso.java">hyppypotku/hyppypotku/dom/Taso.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.states.State.java">hyppypotku/hyppypotku/states/State.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gfx.ImageLoader.java">hyppypotku/hyppypotku/gfx/ImageLoader.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.states.MenuState.java">hyppypotku/hyppypotku/states/MenuState.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gui.Kayttoliittyma.java">hyppypotku/hyppypotku/gui/Kayttoliittyma.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.entities.Entity.java">hyppypotku/hyppypotku/entities/Entity.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,105 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gameframework.Framework.java">hyppypotku/hyppypotku/gameframework/Framework.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gfx.SpriteSheet.java">hyppypotku/hyppypotku/gfx/SpriteSheet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.entities.characters.Character.java">hyppypotku/hyppypotku/entities/characters/Character.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.Main.java">hyppypotku/hyppypotku/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gfx.Assets.java">hyppypotku/hyppypotku/gfx/Assets.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.states.TutorialState.java">hyppypotku/hyppypotku/states/TutorialState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.input.KeyManager.java">hyppypotku/hyppypotku/input/KeyManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.states.GameState.java">hyppypotku/hyppypotku/states/GameState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.gfx.ImageLoader.java">hyppypotku/hyppypotku/gfx/ImageLoader.java</a>
                 </td>
                 <td>
                   0
@@ -139,12 +237,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.Main.java">hyppypotku/hyppypotku/Main.java</a>
+                  <a href="${project.url}/checkstyle.html#hyppypotku.hyppypotku.entities.characters.Stickman.java">hyppypotku/hyppypotku/entities/characters/Stickman.java</a>
                 </td>
                 <td>
                   0
