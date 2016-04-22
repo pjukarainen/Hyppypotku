@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
- * Ikkuna-luokka, joka asettaa ikkunalle halutut ominaisuudet
+ * Ikkuna-luokka, joka asettaa ikkunalle halutut ominaisuudet.
  */
 public class Window {
 
@@ -16,6 +16,13 @@ public class Window {
     private int widht;
     private int height;
 
+    /**
+     * Konstruktori.
+     *
+     * @param title pelin nimi
+     * @param widht ikkunan leveys
+     * @param height ikkunan korkeus
+     */
     public Window(String title, int widht, int height) {
         this.title = title;
         this.widht = widht;

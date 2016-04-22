@@ -1,5 +1,6 @@
 package hyppypotku.hyppypotku.gameframework;
 
+import hyppypotku.hyppypotku.entities.characters.Character;
 import hyppypotku.hyppypotku.entities.characters.Blockman;
 import hyppypotku.hyppypotku.entities.characters.Stickman;
 import hyppypotku.hyppypotku.gfx.Assets;
@@ -12,14 +13,17 @@ import hyppypotku.hyppypotku.states.State;
 import hyppypotku.hyppypotku.states.TutorialState;
 import hyppypotku.hyppypotku.window.Window;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Luokan tehtävänä hallinnoida pelin kulkua
+ * Luokan tehtävänä hallinnoida pelin kulkua.
  */
 public class Game implements Runnable {
 
@@ -38,18 +42,21 @@ public class Game implements Runnable {
     private Blockman blockman;
 
     //states
-    private State GameState;
-    private State MenuState;
-    private State TutorialState;
+    private State gameState;
+    private State menuState;
+    private State tutorialState;
 
     //keyboard
     private KeyManager keymanager;
 
+    /**
+     * Konstruktori.
+     *
+     * @param title pelin nimi
+     * @param width peliruudun leveys
+     * @param height peliruudun korkeus
+     */
     public Game(String title, int width, int height) {
-        if (width <= 0 || height <= 0) {
-            System.out.println("Insert positive resolution values please");
-
-        }
         this.width = width;
         this.height = height;
         this.title = title;
@@ -60,17 +67,17 @@ public class Game implements Runnable {
     }
 
     /**
-     * Alustaa ikkunan ja lataa tarvittavat hahmot ja muut tekstuurit
+     * Alustaa ikkunan ja lataa tarvittavat hahmot ja muut tekstuurit.
      */
     private void init() {
         window = new Window(title, width, height);
         window.getFrame().addKeyListener(keymanager);
         Assets.init();
 
-        GameState = new GameState(this, stickman, blockman);
-        MenuState = new MenuState(this);
-        TutorialState = new TutorialState(this);
-        State.setState(GameState);
+        gameState = new GameState(this, stickman, blockman);
+        menuState = new MenuState(this);
+        tutorialState = new TutorialState(this);
+        State.setState(gameState);
     }
 
     private void tick() {
@@ -79,6 +86,8 @@ public class Game implements Runnable {
         if (State.getState() != null) {
             State.getState().tick();
         }
+
+        checkCollisions();
 
     }
 
@@ -94,6 +103,16 @@ public class Game implements Runnable {
 
         if (State.getState() != null) {
             State.getState().render(g);
+            g.drawString("Stickman: " + Integer.toString(this.stickman.getLives()), 15, 20);
+            g.drawString("Blockman: " + Integer.toString(this.blockman.getLives()), 945, 20);
+        }
+
+        if (this.stickman.getLives() == 0) {
+            drawWinner(g, this.blockman);
+        }
+
+        if (this.blockman.getLives() == 0) {
+            drawWinner(g, this.stickman);
         }
         bs.show();
         g.dispose();
@@ -101,7 +120,7 @@ public class Game implements Runnable {
 
     /**
      * Pakotetaan peli pyörimään tasaisesti 60 fps + visuaalinen fps-laskuri
-     * konsoliin
+     * konsoliin.
      */
     public void run() {
 
@@ -141,7 +160,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Pelin käynnistysmetodi
+     * Pelin käynnistysmetodi.
      */
     public synchronized void start() {
         if (running) {
@@ -153,7 +172,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Pelin pysäytysmetodi
+     * Pelin pysäytysmetodi.
      */
     public synchronized void stop() {
         if (!running) {
@@ -165,6 +184,44 @@ public class Game implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Tehtävänä tarkistaa törmääkö hahmot toisiinsa.
+     */
+    public void checkCollisions() {
+        Rectangle playerOne = stickman.getHitbox();
+        Rectangle playerTwo = blockman.getHitbox();
+
+        if (playerOne.intersects(playerTwo) && this.stickman.getHitboxActive() && this.stickman.getY() <= this.blockman.getY()) {
+            System.out.println("Stickman's kick connected!");
+            this.blockman.loseLives();
+            resetRound();
+        } else if (playerOne.intersects(playerTwo) && this.blockman.getHitboxActive() && this.blockman.getY() <= this.stickman.getY()) {
+            System.out.println("Blockman's kick connected!");
+            this.stickman.loseLives();
+            resetRound();
+        }
+    }
+
+    /**
+     * Asettaa hahmot takaisin aloituspaikoilleen.
+     */
+    public void resetRound() {
+        this.stickman.setX(200);
+        this.stickman.setY(this.height - 100);
+
+        this.blockman.setX(800);
+        this.blockman.setY(this.height - 100);
+    }
+
+    private void drawWinner(Graphics g, Character c) {
+        String msg = c.toString() + " wins!";
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+
+        g.setColor(Color.RED);
+        g.setFont(small);
+        g.drawString(msg, 470, 250);
     }
 
     @Override
@@ -197,7 +254,7 @@ public class Game implements Runnable {
     }
 
     public State getGameState() {
-        return GameState;
+        return gameState;
     }
 
     public KeyManager getKeymanager() {
@@ -211,7 +268,5 @@ public class Game implements Runnable {
     public Stickman getStickman() {
         return stickman;
     }
-    
-    
 
 }

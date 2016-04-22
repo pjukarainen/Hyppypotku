@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Peli-tila, jossa asetetaan hahmojen aloitussijainti sekä päivitetään ja
- * piirretään hahmot ruudulle
+ * piirretään hahmot ruudulle.
  */
 public class GameState extends State {
 
@@ -17,6 +17,13 @@ public class GameState extends State {
     private Blockman blockman;
     private BufferedImage background;
 
+    /**
+     * Konstruktori.
+     *
+     * @param game peli
+     * @param stickman ykköspelaajan hahmo
+     * @param blockman kakkospelaajan hahmo
+     */
     public GameState(Game game, Stickman stickman, Blockman blockman) {
         super(game);
         background = Assets.background;
