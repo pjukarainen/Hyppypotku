@@ -1,6 +1,7 @@
 package hyppypotku.hyppypotku.entities.characters;
 
 import hyppypotku.hyppypotku.entities.Entity;
+import java.awt.Rectangle;
 
 /**
  * Luokka toimii pelin pelattavien hahmojen yliluokkana
@@ -15,10 +16,7 @@ public abstract class Character extends Entity {
     protected int lives;
     protected float xMove, yMove;
     protected float speed;
-    protected boolean jumping = false;
-    protected boolean falling = true;
-    protected float vDelta; //vertical delta
-    protected float gravity; //gravity, how much vDelta is reduced
+    protected float gravity;
 
     public Character(float x, float y, int widht, int height) {
         super(x, y, widht, height);
@@ -55,11 +53,11 @@ public abstract class Character extends Entity {
     }
 
     protected boolean isJumpingBack() {
-        if (yMove == (-speed / 2) || xMove == (-speed / 2)) {
+        if (yMove == (-speed / 5) || xMove == (-speed / 2)) {
             return true;
         }
 
-        if (yMove == (speed / 2) || xMove == (speed / 2)) {
+        if (yMove == (speed / 5) || xMove == (speed / 2)) {
             return true;
         }
 
@@ -71,6 +69,10 @@ public abstract class Character extends Entity {
             return true;
         }
         return false;
+    }
+
+    public Rectangle getHitbox() {
+        return new Rectangle((int) x, (int) y, widht, height);
     }
 
     private void checkOutOfBounds() {

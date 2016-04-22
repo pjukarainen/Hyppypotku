@@ -3,6 +3,7 @@ package hyppypotku.hyppypotku.entities.characters;
 import hyppypotku.hyppypotku.gameframework.Game;
 import hyppypotku.hyppypotku.gfx.Assets;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  * Pelin oikealta puolelta aloittava hahmo
@@ -10,10 +11,12 @@ import java.awt.Graphics;
 public class Blockman extends Character {
 
     private Game game;
+    private Boolean hitboxActive;
 
     public Blockman(Game game, float x, float y) {
         super(x, y, Character.DEFAULT_WIDHT, Character.DEFAULT_HEIGHT);
         this.game = game;
+        this.hitboxActive = false;
     }
 
     /**
@@ -32,23 +35,27 @@ public class Blockman extends Character {
     public void getInput() {
 
         if (!isAirborne()) {
+            this.hitboxActive = false;
             yMove = 0;
             xMove = 0;
         }
 
         if (game.getKeymanager().blockmanJump) {
             if (!isAirborne()) {
+                this.hitboxActive = false;
                 yMove = -speed;
             }
 
         }
         if (game.getKeymanager().blockmanKick) {
             if (isAirborne() && !isJumpingBack() && !isKicking()) {
+                this.hitboxActive = true;
                 yMove = speed;
                 xMove = posOrNeg() * speed;
             }
             if (isGrounded()) {
-                yMove = -speed / 2;
+                this.hitboxActive = false;
+                yMove = -speed / 5;
                 xMove = posOrNeg() * (-speed / 2);
 
             }
@@ -69,6 +76,24 @@ public class Blockman extends Character {
         return -1;
     }
 
+    public Boolean getHitboxActive() {
+        return hitboxActive;
+    }
+
+    public void loseLives() {
+        this.lives--;
+    }
+
+    @Override
+    public int getLives() {
+        return this.lives;
+    }
+
+    public void setStartPos(int coordX, int coordY) {
+        this.x = coordX;
+        this.y = coordY;
+    }
+
     /**
      * Piirtää ruudulle hahmon
      *
@@ -78,4 +103,10 @@ public class Blockman extends Character {
     public void render(Graphics g) {
         g.drawImage(Assets.player, (int) x, (int) y, widht, height, null);
     }
+
+    @Override
+    public String toString() {
+        return "Blockman";
+    }
+
 }
