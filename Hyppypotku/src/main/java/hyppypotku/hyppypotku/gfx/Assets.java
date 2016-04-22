@@ -3,14 +3,14 @@ package hyppypotku.hyppypotku.gfx;
 import java.awt.image.BufferedImage;
 
 /**
- * Luokan tehtävänä hallinnoida pelin objekteja
+ * Luokan tehtävänä hallinnoida pelin objekteja.
  */
 public class Assets {
 
     public static BufferedImage hpfull, hpzero, player, roundfull, roundempty, background;
 
     /**
-     * Metodi alustaa ja "leikkaa" spritesheetistä objektit omiksi olioikseen
+     * Metodi alustaa ja "leikkaa" spritesheetistä objektit omiksi olioikseen.
      */
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));

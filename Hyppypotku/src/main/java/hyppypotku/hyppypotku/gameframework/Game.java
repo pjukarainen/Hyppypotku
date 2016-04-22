@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Luokan tehtävänä hallinnoida pelin kulkua
+ * Luokan tehtävänä hallinnoida pelin kulkua.
  */
 public class Game implements Runnable {
 
@@ -42,18 +42,21 @@ public class Game implements Runnable {
     private Blockman blockman;
 
     //states
-    private State GameState;
-    private State MenuState;
-    private State TutorialState;
+    private State gameState;
+    private State menuState;
+    private State tutorialState;
 
     //keyboard
     private KeyManager keymanager;
 
+    /**
+     * Konstruktori.
+     *
+     * @param title pelin nimi
+     * @param width peliruudun leveys
+     * @param height peliruudun korkeus
+     */
     public Game(String title, int width, int height) {
-        if (width <= 0 || height <= 0) {
-            System.out.println("Insert positive resolution values please");
-
-        }
         this.width = width;
         this.height = height;
         this.title = title;
@@ -64,17 +67,17 @@ public class Game implements Runnable {
     }
 
     /**
-     * Alustaa ikkunan ja lataa tarvittavat hahmot ja muut tekstuurit
+     * Alustaa ikkunan ja lataa tarvittavat hahmot ja muut tekstuurit.
      */
     private void init() {
         window = new Window(title, width, height);
         window.getFrame().addKeyListener(keymanager);
         Assets.init();
 
-        GameState = new GameState(this, stickman, blockman);
-        MenuState = new MenuState(this);
-        TutorialState = new TutorialState(this);
-        State.setState(GameState);
+        gameState = new GameState(this, stickman, blockman);
+        menuState = new MenuState(this);
+        tutorialState = new TutorialState(this);
+        State.setState(gameState);
     }
 
     private void tick() {
@@ -117,7 +120,7 @@ public class Game implements Runnable {
 
     /**
      * Pakotetaan peli pyörimään tasaisesti 60 fps + visuaalinen fps-laskuri
-     * konsoliin
+     * konsoliin.
      */
     public void run() {
 
@@ -157,7 +160,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Pelin käynnistysmetodi
+     * Pelin käynnistysmetodi.
      */
     public synchronized void start() {
         if (running) {
@@ -169,7 +172,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Pelin pysäytysmetodi
+     * Pelin pysäytysmetodi.
      */
     public synchronized void stop() {
         if (!running) {
@@ -183,21 +186,27 @@ public class Game implements Runnable {
         }
     }
 
+    /**
+     * Tehtävänä tarkistaa törmääkö hahmot toisiinsa.
+     */
     public void checkCollisions() {
         Rectangle playerOne = stickman.getHitbox();
         Rectangle playerTwo = blockman.getHitbox();
 
         if (playerOne.intersects(playerTwo) && this.stickman.getHitboxActive() && this.stickman.getY() <= this.blockman.getY()) {
-            System.out.println("stickman osu");
+            System.out.println("Stickman's kick connected!");
             this.blockman.loseLives();
             resetRound();
         } else if (playerOne.intersects(playerTwo) && this.blockman.getHitboxActive() && this.blockman.getY() <= this.stickman.getY()) {
-            System.out.println("blockman osu");
+            System.out.println("Blockman's kick connected!");
             this.stickman.loseLives();
             resetRound();
         }
     }
 
+    /**
+     * Asettaa hahmot takaisin aloituspaikoilleen.
+     */
     public void resetRound() {
         this.stickman.setX(200);
         this.stickman.setY(this.height - 100);
@@ -245,7 +254,7 @@ public class Game implements Runnable {
     }
 
     public State getGameState() {
-        return GameState;
+        return gameState;
     }
 
     public KeyManager getKeymanager() {

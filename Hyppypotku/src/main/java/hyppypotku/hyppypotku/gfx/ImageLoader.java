@@ -6,15 +6,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Luokka, jonka tehtävänä on ladata kuvia
+ * Luokka, jonka tehtävänä on ladata kuvia.
  */
 public class ImageLoader {
 
     /**
-     * Metodi lataa kuvan
+     * Metodi lataa kuvan.
      *
-     * @param tiedostopolku kuvaan
-     * 
+     * @param path tiedostopolku haluttuun kuvaan
+     *
      * @return kuva
      */
     public static BufferedImage loadImage(String path) {

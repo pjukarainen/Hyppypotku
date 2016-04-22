@@ -66,6 +66,23 @@ public class GameTest {
         this.game.run();
         assertEquals(false, this.game.isRunning());
     }
-    
-    
+
+    @Test
+    public void roundResetsCorrectlyForStickman() {
+        this.game.getStickman().setX(500);
+        this.game.getStickman().setY(0);
+        this.game.resetRound();
+        assertEquals(200, (int) this.game.getStickman().getX());
+        assertEquals(this.game.getHeight() - 100, (int) this.game.getStickman().getY());
+    }
+
+    @Test
+    public void roundResetsCorrectlyForBlockman() {
+        this.game.getBlockman().setX(100);
+        this.game.getBlockman().setY(1000);
+        this.game.resetRound();
+        assertEquals(800, (int) this.game.getBlockman().getX());
+        assertEquals(this.game.getHeight() - 100, (int) this.game.getBlockman().getY());
+    }
+
 }

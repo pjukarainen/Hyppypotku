@@ -6,13 +6,20 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
- * Pelin oikealta puolelta aloittava hahmo
+ * Pelin oikealta puolelta aloittava hahmo.
  */
 public class Blockman extends Character {
 
     private Game game;
     private Boolean hitboxActive;
 
+    /**
+     * Konstruktori.
+     *
+     * @param game peli
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Blockman(Game game, float x, float y) {
         super(x, y, Character.DEFAULT_WIDHT, Character.DEFAULT_HEIGHT);
         this.game = game;
@@ -21,7 +28,7 @@ public class Blockman extends Character {
 
     /**
      * Metodi päivittää käyttäjän antamat syötteet ja liikuttaa hahmoa niiden
-     * mukaan
+     * mukaan.
      */
     @Override
     public void tick() {
@@ -30,7 +37,7 @@ public class Blockman extends Character {
     }
 
     /**
-     * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii
+     * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii.
      */
     public void getInput() {
 
@@ -62,6 +69,11 @@ public class Blockman extends Character {
         }
     }
 
+    /**
+     * Selvittää onko pelihahmo vasemmanpuolimmaisin.
+     *
+     * @return boolean
+     */
     public boolean isLeftmost() {
         if (this.x < this.game.getStickman().getX()) {
             return true;
@@ -80,6 +92,9 @@ public class Blockman extends Character {
         return hitboxActive;
     }
 
+    /**
+     * Vähentää hahmon elämiä.
+     */
     public void loseLives() {
         this.lives--;
     }
@@ -89,13 +104,19 @@ public class Blockman extends Character {
         return this.lives;
     }
 
+    /**
+     * Asettaa aloituskohdan hahmolle.
+     *
+     * @param coordX hahmon x-koordinaatti
+     * @param coordY hahmon y-koordinaatti
+     */
     public void setStartPos(int coordX, int coordY) {
         this.x = coordX;
         this.y = coordY;
     }
 
     /**
-     * Piirtää ruudulle hahmon
+     * Piirtää ruudulle hahmon.
      *
      * @param grafiikkaobjekti
      */

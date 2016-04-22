@@ -9,40 +9,46 @@ import java.awt.image.BufferedImage;
 
 /**
  * Peli-tila, jossa asetetaan hahmojen aloitussijainti sekä päivitetään ja
- * piirretään hahmot ruudulle
+ * piirretään hahmot ruudulle.
  */
 public class GameState extends State {
-    
+
     private Stickman stickman;
     private Blockman blockman;
     private BufferedImage background;
-    
+
+    /**
+     * Konstruktori.
+     *
+     * @param game peli
+     * @param stickman ykköspelaajan hahmo
+     * @param blockman kakkospelaajan hahmo
+     */
     public GameState(Game game, Stickman stickman, Blockman blockman) {
         super(game);
         background = Assets.background;
         this.stickman = stickman;
         this.blockman = blockman;
-        
+
     }
-    
+
     public BufferedImage getBackground() {
         return background;
     }
-    
+
     @Override
     public void tick() {
         stickman.tick();
         blockman.tick();
-        
+
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.drawImage(background, 0, 0, null);
         stickman.render(g);
         blockman.render(g);
-        
+
     }
-    
-   
+
 }
