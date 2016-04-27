@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  */
 public class Assets {
 
-    public static BufferedImage hpfull, hpzero, player, roundfull, roundempty, background;
+    public static BufferedImage hpfull, hpzero, stickman, blockman, roundfull, roundempty, background;
 
     /**
      * Metodi alustaa ja "leikkaa" spritesheetistä objektit omiksi olioikseen.
@@ -18,7 +18,8 @@ public class Assets {
 
         hpfull = sheet.crop(0, 0, 256, 48);
         hpzero = sheet.crop(0, 48, 256, 48);
-        player = sheet.crop(0, 96, 96, 160);
+        stickman = sheet.crop(0, 96, 96, 160);
+        blockman = sheet.crop(256, 96, 96, 160);
         roundfull = sheet.crop(101, 97, 90, 79);
         roundempty = sheet.crop(102, 177, 89, 79);
         background = level.crop(0, 0, 1024, 768);

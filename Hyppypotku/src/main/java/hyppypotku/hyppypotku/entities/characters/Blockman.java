@@ -122,7 +122,7 @@ public class Blockman extends Character {
      */
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y, widht, height, null);
+        g.drawImage(Assets.blockman, (int) x, (int) y, widht, height, null);
     }
 
     @Override
