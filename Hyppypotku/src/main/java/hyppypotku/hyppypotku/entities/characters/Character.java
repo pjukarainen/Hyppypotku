@@ -83,7 +83,7 @@ public abstract class Character extends Entity {
         return new Rectangle((int) x, (int) y, widht, height);
     }
 
-    private void checkOutOfBounds() {
+    protected void checkOutOfBounds() {
         if (x <= 0) {
             x = 0;
         }

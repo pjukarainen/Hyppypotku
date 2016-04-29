@@ -43,4 +43,79 @@ public class CharacterTest {
     public void tearDown() {
     }
 
+    @Test
+    public void isGroundedReturnsFalse() {
+        assertEquals(false, this.character.isGrounded());
+    }
+
+    @Test
+    public void isGroundedReturnsTrue() {
+        this.character.setY(780);
+        assertEquals(true, this.character.isGrounded());
+    }
+
+    @Test
+    public void isAirborneReturnTrue() {
+        this.character.setY(610);
+        assertEquals(true, this.character.isAirborne());
+    }
+
+    @Test
+    public void isAirborneReturnFalse() {
+        this.character.setY(750);
+        assertEquals(false, this.character.isAirborne());
+    }
+
+    @Test
+    public void isGroundedFalseMeansAirborneTrue() {
+        this.character.setY(200);
+        assertEquals(!this.character.isGrounded(), this.character.isAirborne());
+    }
+
+    @Test
+    public void isGroundedTrueMeansAirborneFalse() {
+        this.character.setY(780);
+        assertEquals(character.isGrounded(), !this.character.isAirborne());
+    }
+
+    @Test
+    public void jumpingBackReturnsFalseByDefault() {
+        assertEquals(false, this.character.isJumpingBack());
+    }
+
+    @Test
+    public void isKickingReturnFalseByDefault() {
+        assertEquals(false, this.character.isKicking());
+    }
+
+    @Test
+    public void characterDoesNotGoOffTheScreenLeftSide() {
+        this.character.setX(-50);
+        this.character.checkOutOfBounds();
+        assertEquals(0, (int) this.character.getX());
+    }
+
+    @Test
+    public void characterDoesNotGoOffTheScreenRightSide() {
+        this.character.setX(3000);
+        this.character.checkOutOfBounds();
+        assertEquals(1024 - this.character.getWidht(), (int) this.character.getX());
+    }
+
+    @Test
+    public void characterDoesNotGoOffTheScreenFromTop() {
+        this.character.setY(-100);
+        this.character.checkOutOfBounds();
+        assertEquals(0, (int) this.character.getY());
+    }
+
+    @Test
+    public void characterDoesNotGoOffTheScreenFromBottom() {
+        this.character.setY(1000);
+        this.character.checkOutOfBounds();
+        assertEquals(697 - this.character.getHeight(), (int) this.character.getY());
+    }
+    
+   
+
 }

@@ -5,6 +5,7 @@
  */
 package hyppypotku.hyppypotku.states;
 
+import com.sun.glass.events.KeyEvent;
 import hyppypotku.hyppypotku.gameframework.Game;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,4 +61,7 @@ public class GameStateTest {
         assertEquals(800, (int) this.game.getBlockman().getX());
         assertEquals(this.game.getHeight() - 100, (int) this.game.getBlockman().getY());
     }
+
+ 
+
 }

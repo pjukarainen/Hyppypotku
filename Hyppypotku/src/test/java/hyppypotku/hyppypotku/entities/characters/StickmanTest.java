@@ -47,4 +47,6 @@ public class StickmanTest {
     public void constructorSetsHitboxActiveToFalse() {
         assertEquals(false, this.stickman.getHitboxActive());
     }
+    
+    
 }
