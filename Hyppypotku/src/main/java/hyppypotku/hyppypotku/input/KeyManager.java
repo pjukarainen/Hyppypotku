@@ -24,8 +24,8 @@ public class KeyManager implements KeyListener {
     public void tick() {
         stickmanJump = keys[KeyEvent.VK_A];
         stickmanKick = keys[KeyEvent.VK_D];
-        blockmanJump = keys[KeyEvent.VK_NUMPAD4];
-        blockmanKick = keys[KeyEvent.VK_NUMPAD6];
+        blockmanJump = keys[KeyEvent.VK_LEFT];
+        blockmanKick = keys[KeyEvent.VK_RIGHT];
         mainMenu = keys[KeyEvent.VK_ESCAPE];
         startGame = keys[KeyEvent.VK_ENTER];
         showTutorial = keys[KeyEvent.VK_T];
