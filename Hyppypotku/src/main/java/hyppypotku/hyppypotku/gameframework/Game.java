@@ -77,7 +77,7 @@ public class Game implements Runnable {
         gameState = new GameState(this, stickman, blockman);
         menuState = new MenuState(this);
         tutorialState = new TutorialState(this);
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     private void tick() {
@@ -86,8 +86,6 @@ public class Game implements Runnable {
         if (State.getState() != null) {
             State.getState().tick();
         }
-
-        checkCollisions();
 
     }
 
@@ -103,17 +101,9 @@ public class Game implements Runnable {
 
         if (State.getState() != null) {
             State.getState().render(g);
-            g.drawString("Stickman: " + Integer.toString(this.stickman.getLives()), 15, 20);
-            g.drawString("Blockman: " + Integer.toString(this.blockman.getLives()), 945, 20);
+
         }
 
-        if (this.stickman.getLives() == 0) {
-            drawWinner(g, this.blockman);
-        }
-
-        if (this.blockman.getLives() == 0) {
-            drawWinner(g, this.stickman);
-        }
         bs.show();
         g.dispose();
     }
@@ -186,44 +176,32 @@ public class Game implements Runnable {
         }
     }
 
-    /**
-     * Tehtävänä tarkistaa törmääkö hahmot toisiinsa.
-     */
-    public void checkCollisions() {
-        Rectangle playerOne = stickman.getHitbox();
-        Rectangle playerTwo = blockman.getHitbox();
-
-        if (playerOne.intersects(playerTwo) && this.stickman.getHitboxActive() && this.stickman.getY() <= this.blockman.getY()) {
-            System.out.println("Stickman's kick connected!");
-            this.blockman.loseLives();
-            resetRound();
-        } else if (playerOne.intersects(playerTwo) && this.blockman.getHitboxActive() && this.blockman.getY() <= this.stickman.getY()) {
-            System.out.println("Blockman's kick connected!");
-            this.stickman.loseLives();
-            resetRound();
-        }
-    }
-
-    /**
-     * Asettaa hahmot takaisin aloituspaikoilleen.
-     */
-    public void resetRound() {
-        this.stickman.setX(200);
-        this.stickman.setY(this.height - 100);
-
-        this.blockman.setX(800);
-        this.blockman.setY(this.height - 100);
-    }
-
-    private void drawWinner(Graphics g, Character c) {
-        String msg = c.toString() + " wins!";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-
-        g.setColor(Color.RED);
-        g.setFont(small);
-        g.drawString(msg, 470, 250);
-    }
-
+//    /**
+//     * Tehtävänä tarkistaa törmääkö hahmot toisiinsa.
+//     */
+//    public void checkCollisions() {
+//        Rectangle playerOne = stickman.getHitbox();
+//        Rectangle playerTwo = blockman.getHitbox();
+//
+//        if (playerOne.intersects(playerTwo) && this.stickman.getHitboxActive() && this.stickman.getY() <= this.blockman.getY()) {
+//            this.blockman.loseLives();
+//            resetRound();
+//        } else if (playerOne.intersects(playerTwo) && this.blockman.getHitboxActive() && this.blockman.getY() <= this.stickman.getY()) {
+//            this.stickman.loseLives();
+//            resetRound();
+//        }
+//    }
+//
+//    /**
+//     * Asettaa hahmot takaisin aloituspaikoilleen.
+//     */
+//    public void resetRound() {
+//        this.stickman.setX(200);
+//        this.stickman.setY(this.height - 100);
+//
+//        this.blockman.setX(800);
+//        this.blockman.setY(this.height - 100);
+//    }
     @Override
     public String toString() {
         return this.title + " " + this.width + " x " + this.height;
@@ -255,6 +233,14 @@ public class Game implements Runnable {
 
     public State getGameState() {
         return gameState;
+    }
+
+    public State getMenuState() {
+        return menuState;
+    }
+
+    public State getTutorialState() {
+        return tutorialState;
     }
 
     public KeyManager getKeymanager() {

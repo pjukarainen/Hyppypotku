@@ -115,6 +115,10 @@ public class Blockman extends Character {
         this.y = coordY;
     }
 
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
     /**
      * Piirtää ruudulle hahmon.
      *

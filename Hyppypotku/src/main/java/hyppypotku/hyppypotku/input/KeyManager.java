@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     private boolean[] keys;
-    public boolean stickmanJump, stickmanKick, blockmanJump, blockmanKick;
+    public boolean stickmanJump, stickmanKick, blockmanJump, blockmanKick, mainMenu, startGame, showTutorial;
 
     /**
      * Konstruktori.
@@ -26,6 +26,9 @@ public class KeyManager implements KeyListener {
         stickmanKick = keys[KeyEvent.VK_D];
         blockmanJump = keys[KeyEvent.VK_NUMPAD4];
         blockmanKick = keys[KeyEvent.VK_NUMPAD6];
+        mainMenu = keys[KeyEvent.VK_ESCAPE];
+        startGame = keys[KeyEvent.VK_ENTER];
+        showTutorial = keys[KeyEvent.VK_T];
     }
 
     @Override

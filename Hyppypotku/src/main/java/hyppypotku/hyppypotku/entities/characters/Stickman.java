@@ -105,6 +105,12 @@ public class Stickman extends Character {
         return this.lives;
     }
 
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+    
+    
+
     /**
      * Asettaa hahmon aloituspaikan.
      *
