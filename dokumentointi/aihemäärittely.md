@@ -13,3 +13,7 @@ Pelin voittaa se pelaaja, joka voittaa ensin viisi erää.
 - Ottelun käynnistäminen
 - Hahmon kontrollointi
 
+**Rakennekuvaus**: Ohjelman Assets-luokka valmistelee kaikki kuvat joita ohjelmassa tarvitsee. State-yliluokka määrittää sen periville luokille tick-, ja render-metodit. Menustate hoitaa päävalikon toiminnot ja Tutorialstate ohjeruudun näkymän. Gamestate renderöi pelattavat hahmot ja taustan ruudulle, sekä huolehtii ottelun voittajan julkistamisen, sekä hahmojen uudelleenasettamisen aloituspaikoilleen erän päätyttyä.
+
+Blockman ja Stickman ovat pelin pelattavia hahmoja ja ne perivät Character-yliluokan, joka määrittää pelattaville hahmoille metodeja, jotka muun muassa auttavat saamaan selville onko hahmo ilmassa vai maassa. Character-luokka perii vielä Entity-luokan joka on kaikkien pelattavien objektien yliluokka. Window-luokka hoitaa ikkunan alustamisen. Game-luokka on ohjelman tärkein luokka, joka yhdistää kaikki edellämainitut luokat yhteen ja muodostaa niistä toimivan kokonaisuuden peliloopin avulla.
+
