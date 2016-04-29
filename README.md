@@ -8,3 +8,7 @@
 
 [Tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
 
+[Checkstyle](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/site/checkstyle.html)
+
+
+
