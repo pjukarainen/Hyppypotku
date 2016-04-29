@@ -15,24 +15,29 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../hyppypotku/hyppypotku/gfx/Assets.html">Assets</a> {
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> BufferedImage hpfull, hpzero, player, roundfull, roundempty, background;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> BufferedImage hpfull, hpzero, stickman, blockman, roundfull, roundempty, background, mainMenuBackground, tutorialBackground;
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment">     * Metodi alustaa ja "leikkaa" spritesheetistä objektit omiksi olioikseen.</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> init() {
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>          <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a> sheet = <strong class="jxr_keyword">new</strong> <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a>(ImageLoader.loadImage(<span class="jxr_string">"/textures/sheet.png"</span>));
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a> level = <strong class="jxr_keyword">new</strong> <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a>(ImageLoader.loadImage(<span class="jxr_string">"/textures/background.png"</span>));
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>          hpfull = sheet.crop(0, 0, 256, 48);
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>          hpzero = sheet.crop(0, 48, 256, 48);
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>          player = sheet.crop(0, 96, 96, 160);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>          roundfull = sheet.crop(101, 97, 90, 79);
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>          roundempty = sheet.crop(102, 177, 89, 79);
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>          background = level.crop(0, 0, 1024, 768);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>      }
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  }
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a> menu = <strong class="jxr_keyword">new</strong> <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a>(ImageLoader.loadImage(<span class="jxr_string">"/textures/menuBackground.png"</span>));
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a> tutorial = <strong class="jxr_keyword">new</strong> <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a>(ImageLoader.loadImage(<span class="jxr_string">"/textures/tutorialBackground.png"</span>));
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a> level = <strong class="jxr_keyword">new</strong> <a href="../../../hyppypotku/hyppypotku/gfx/SpriteSheet.html">SpriteSheet</a>(ImageLoader.loadImage(<span class="jxr_string">"/textures/background.png"</span>));
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          hpfull = sheet.crop(0, 0, 256, 48);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          hpzero = sheet.crop(0, 48, 256, 48);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          stickman = sheet.crop(0, 96, 96, 160);
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          blockman = sheet.crop(256, 96, 96, 160);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          roundfull = sheet.crop(101, 97, 90, 79);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          roundempty = sheet.crop(102, 177, 89, 79);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          background = level.crop(0, 0, 1024, 768);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          mainMenuBackground = menu.crop(0, 0, 1024, 768);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          tutorialBackground = tutorial.crop(0, 0, 1024, 768);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      }
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>
