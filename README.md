@@ -10,7 +10,7 @@
 
 [Checkstyle](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/site/checkstyle.html)
 
-[Pit](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/pit-reports/201604291934/index.html)
+[Pit](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/pit-reports/201605051344/index.html)
 
 
 
