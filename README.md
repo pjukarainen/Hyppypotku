@@ -12,5 +12,7 @@
 
 [Pit](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/pit-reports/201605051513/index.html)
 
+[Javadoc](https://htmlpreview.github.io/?https://github.com/pjukarainen/Hyppypotku/blob/master/dokumentointi/site/apidocs/index.html)
+
 
 
