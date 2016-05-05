@@ -42,7 +42,8 @@ public class Stickman extends Character {
      * Määrittää mitä tapahtuu kun hahmo hyppää tai potkii.
      */
     public void getInput() {
-        if (!isAirborne()) {
+
+        if (!isAirborne() || isGrounded()) {
             this.hitboxActive = false;
             yMove = 0;
             xMove = 0;
@@ -56,17 +57,18 @@ public class Stickman extends Character {
 
         }
         if (game.getKeymanager().stickmanKick) {
-            if (isAirborne() && !isJumpingBack() && !isKicking()) {
-                this.hitboxActive = true;
-                yMove = speed;
-                xMove = posOrNeg() * speed;
-            }
             if (isGrounded()) {
                 this.hitboxActive = false;
                 yMove = -speed / 5;
                 xMove = posOrNeg() * (-speed / 2);
 
             }
+            if (isAirborne() && !isJumpingBack() && !isKicking()) {
+                this.hitboxActive = true;
+                yMove = speed;
+                xMove = posOrNeg() * speed;
+            }
+
         }
     }
 
@@ -108,8 +110,6 @@ public class Stickman extends Character {
     public void setLives(int lives) {
         this.lives = lives;
     }
-    
-    
 
     /**
      * Asettaa hahmon aloituspaikan.

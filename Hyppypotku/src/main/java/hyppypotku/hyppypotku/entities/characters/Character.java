@@ -46,7 +46,7 @@ public abstract class Character extends Entity {
     }
 
     protected boolean isGrounded() {
-        if (y >= 697 - this.height) {
+        if (y >= 696 - this.height) {
             return true;
         }
 

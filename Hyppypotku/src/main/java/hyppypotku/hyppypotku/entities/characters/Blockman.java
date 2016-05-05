@@ -41,7 +41,7 @@ public class Blockman extends Character {
      */
     public void getInput() {
 
-        if (!isAirborne()) {
+        if (!isAirborne() || isGrounded()) {
             this.hitboxActive = false;
             yMove = 0;
             xMove = 0;
@@ -55,17 +55,18 @@ public class Blockman extends Character {
 
         }
         if (game.getKeymanager().blockmanKick) {
-            if (isAirborne() && !isJumpingBack() && !isKicking()) {
-                this.hitboxActive = true;
-                yMove = speed;
-                xMove = posOrNeg() * speed;
-            }
             if (isGrounded()) {
                 this.hitboxActive = false;
                 yMove = -speed / 5;
                 xMove = posOrNeg() * (-speed / 2);
 
             }
+            if (isAirborne() && !isJumpingBack() && !isKicking()) {
+                this.hitboxActive = true;
+                yMove = speed;
+                xMove = posOrNeg() * speed;
+            }
+
         }
     }
 
