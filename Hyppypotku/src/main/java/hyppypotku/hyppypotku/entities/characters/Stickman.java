@@ -125,7 +125,7 @@ public class Stickman extends Character {
     /**
      * Piirtää ruudulle hahmon.
      *
-     * @param grafiikkaobjekti
+     * @param g grafiikkaobjekti
      */
     @Override
     public void render(Graphics g) {

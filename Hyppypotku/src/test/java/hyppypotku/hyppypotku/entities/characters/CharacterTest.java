@@ -114,8 +114,7 @@ public class CharacterTest {
         this.character.setY(1000);
         this.character.checkOutOfBounds();
         assertEquals(697 - this.character.getHeight(), (int) this.character.getY());
+
     }
-    
-   
 
 }

@@ -17,12 +17,12 @@ import static org.junit.Assert.*;
  *
  * @author Pete
  */
-public class StickmanTest {
+public class BlockmanTest {
 
-    private Stickman stickman;
+    private Blockman blockman;
     private Game game;
 
-    public StickmanTest() {
+    public BlockmanTest() {
     }
 
     @BeforeClass
@@ -36,7 +36,7 @@ public class StickmanTest {
     @Before
     public void setUp() {
         this.game = new Game("Hyppypotku", 1024, 768);
-        this.stickman = new Stickman(game, 200, this.game.getHeight() - 100);
+        this.blockman = new Blockman(game, 200, this.game.getHeight() - 100);
     }
 
     @After
@@ -45,22 +45,20 @@ public class StickmanTest {
 
     @Test
     public void constructorSetsHitboxActiveToFalse() {
-        assertEquals(false, this.stickman.getHitboxActive());
+        assertEquals(false, this.blockman.getHitboxActive());
     }
-    
+
     @Test
     public void livesAreLost() {
-        assertEquals(5, this.stickman.getLives());
-        this.stickman.loseLives();
-        assertEquals(4, this.stickman.getLives());
+        assertEquals(5, this.blockman.getLives());
+        this.blockman.loseLives();
+        assertEquals(4, this.blockman.getLives());
     }
-    
+
     @Test
     public void isLeftMost() {
-        assertEquals(true, this.stickman.isLeftmost());
-        this.stickman.setX(1024);
-        assertEquals(false, this.stickman.isLeftmost());
+        assertEquals(false, this.blockman.isLeftmost());
+        this.blockman.setX(0);
+        assertEquals(true, this.blockman.isLeftmost());
     }
-    
-    
 }

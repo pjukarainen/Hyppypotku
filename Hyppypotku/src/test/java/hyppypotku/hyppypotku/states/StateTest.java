@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hyppypotku.hyppypotku.entities.characters;
+package hyppypotku.hyppypotku.states;
 
 import hyppypotku.hyppypotku.gameframework.Game;
 import org.junit.After;
@@ -17,12 +17,13 @@ import static org.junit.Assert.*;
  *
  * @author Pete
  */
-public class StickmanTest {
+public class StateTest {
 
-    private Stickman stickman;
+    private State menuState;
+    private State tutorialState;
     private Game game;
 
-    public StickmanTest() {
+    public StateTest() {
     }
 
     @BeforeClass
@@ -36,7 +37,8 @@ public class StickmanTest {
     @Before
     public void setUp() {
         this.game = new Game("Hyppypotku", 1024, 768);
-        this.stickman = new Stickman(game, 200, this.game.getHeight() - 100);
+        this.menuState = new MenuState(game);
+        this.tutorialState = new TutorialState(game);
     }
 
     @After
@@ -44,23 +46,16 @@ public class StickmanTest {
     }
 
     @Test
-    public void constructorSetsHitboxActiveToFalse() {
-        assertEquals(false, this.stickman.getHitboxActive());
+    public void statesReturnProperly() {
+        State.setState(menuState);
+        assertEquals(menuState, State.getState());
     }
-    
+
     @Test
-    public void livesAreLost() {
-        assertEquals(5, this.stickman.getLives());
-        this.stickman.loseLives();
-        assertEquals(4, this.stickman.getLives());
+    public void statesSwitchProperly() {
+        State.setState(menuState);
+        assertEquals(menuState, State.getState());
+        State.setState(tutorialState);
+        assertEquals(tutorialState, State.getState());
     }
-    
-    @Test
-    public void isLeftMost() {
-        assertEquals(true, this.stickman.isLeftmost());
-        this.stickman.setX(1024);
-        assertEquals(false, this.stickman.isLeftmost());
-    }
-    
-    
 }

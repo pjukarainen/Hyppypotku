@@ -15,7 +15,7 @@ public class TutorialState extends State {
     /**
      * Konstruktori.
      *
-     * @param game
+     * @param game peliobjekti
      */
     public TutorialState(Game game) {
         super(game);
