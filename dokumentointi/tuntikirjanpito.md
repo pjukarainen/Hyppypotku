@@ -8,3 +8,5 @@ Päivä | Tunnit | Kuvaus
 8.4.2016 | 8h | Koodaamista
 16.4.2016 | 10h | Koodaamista
 22.4.2016 | 8h | Koodaamista, sekvenssikaavio, javadoc
+29.4.2016 | 6h | Testejä
+5.5.2016 | 5h | Dokumentaation päivittelyä, testejä
